@@ -93,7 +93,10 @@ export function Hero() {
   return (
     <section className="hero" id="top">
       <div className="hero__bg" aria-hidden="true">
-        <div className="hero__bg-image" />
+        <div
+          className="hero__bg-image"
+          style={{ backgroundImage: `url('${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/images/bg_1_1.jpg')` }}
+        />
         <div
           className="hero__bg-grid"
           style={{ transform: `translate(${px}px, ${py}px)` }}
@@ -107,7 +110,7 @@ export function Hero() {
             <div className="hero__media">
               <div className="hero__avatar glass">
                 <Image
-                  src="images/samip_profile.jpg"
+                  src="/images/samip_profile.jpg"
                   alt={`${person.name} profile photo`}
                   width={420}
                   height={520}

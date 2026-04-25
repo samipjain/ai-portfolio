@@ -568,7 +568,6 @@ section {
   left: 50%;
   transform: translateX(-50%);
   width: min(100%, 1200px);
-  background-image: url('images/bg_1_1.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
