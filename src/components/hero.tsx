@@ -107,7 +107,7 @@ export function Hero() {
             <div className="hero__media">
               <div className="hero__avatar glass">
                 <Image
-                  src="/images/samip_profile.jpg"
+                  src="images/samip_profile.jpg"
                   alt={`${person.name} profile photo`}
                   width={420}
                   height={520}
