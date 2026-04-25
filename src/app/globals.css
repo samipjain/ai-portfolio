@@ -676,6 +676,7 @@ section {
   background: var(--fg);
   color: var(--bg);
 }
+.chip.chip--on:hover { color: var(--bg); background: var(--fg); }
 .chip__count {
   font-family: var(--font-mono);
   font-size: 11px;
