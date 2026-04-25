@@ -1,0 +1,7 @@
+export function Aura() {
+  return (
+    <div className="aura" aria-hidden="true">
+      <span />
+    </div>
+  );
+}
