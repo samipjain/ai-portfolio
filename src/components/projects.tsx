@@ -6,7 +6,7 @@ import { ProjectCard } from "./project-card";
 
 export function Projects() {
   const { projects } = portfolioData;
-  const [filter, setFilter] = useState<"all" | "work" | "personal">("personal");
+  const [filter, setFilter] = useState<"all" | "work" | "personal" | "founder">("personal");
 
   const filtered = useMemo(() => {
     if (filter === "all") return projects;
@@ -33,12 +33,19 @@ export function Projects() {
         </header>
 
         <div className="projects__filter glass">
-          <button
+        <button
             className={`chip ${filter === "personal" ? "chip--on" : ""}`}
             onClick={() => setFilter("personal")}
           >
-            <span className="chip__dot chip__dot--personal" /> Founder Mode
+            <span className="chip__dot chip__dot--personal" /> Builder
             <span className="chip__count">{counts.personal}</span>
+          </button>
+          <button
+            className={`chip ${filter === "founder" ? "chip--on" : ""}`}
+            onClick={() => setFilter("founder")}
+          >
+            <span className="chip__dot chip__dot--founder" /> Founder Mode
+            <span className="chip__count">{counts.founder}</span>
           </button>
           <button
             className={`chip ${filter === "work" ? "chip--on" : ""}`}

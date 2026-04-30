@@ -41,7 +41,7 @@ export function ProjectCard({ project }: { project: Project }) {
         <div className="card__meta">
           <span className={`card__kind card__kind--${project.kind}`}>
             <span className="card__kind-dot" />
-            {project.kind === "personal" ? "Founder" : "Work"}
+            {project.kind}
           </span>
           <span className="mono">{project.year}</span>
         </div>

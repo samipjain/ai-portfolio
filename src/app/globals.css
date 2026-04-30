@@ -22,6 +22,7 @@
 
   --tag-work: oklch(0.55 0.12 255);
   --tag-personal: oklch(0.62 0.14 160);
+  --tag-founder: oklch(0.55 0.14 110);
 
   /* Glass */
   --glass-bg: rgba(255, 255, 255, 0.62);
@@ -689,6 +690,7 @@ section {
 }
 .chip__dot--work { background: var(--tag-work); }
 .chip__dot--personal { background: var(--tag-personal); }
+.chip__dot--founder { background: var(--tag-founder); }
 .chip--on .chip__dot { opacity: 0.9; }
 
 /* ============================================
@@ -760,6 +762,7 @@ section {
 }
 .card__kind--work .card__kind-dot { background: var(--tag-work); }
 .card__kind--personal .card__kind-dot { background: var(--tag-personal); }
+.card__kind--founder .card__kind-dot { background: var(--tag-founder); }
 
 .card__title {
   font-size: 20px;

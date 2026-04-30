@@ -15,67 +15,72 @@ export const portfolioData: PortfolioData = {
 
   projects: [
     {
-      slug: "uplift",
+      slug: "activity-tracker",
       title: "Uplift",
       kind: "personal",
-      tags: ["Founder Mode"],
+      type: "personal",
+      tags: ["Healthcare", "Wellness"],
       year: "2026",
       summary:
-        "A habit tracking web app with Duolingo-style streak gamification",
+        "An activity tracking app with Duolingo-style streaks",
       description:
-        "A vibe-coded experiment in calm-tech. Patience Pod is an ambient AI companion built to help you stay with a task longer. It uses short guided audio sessions, gentle haptic cues, and a visual rhythm that discourages context switching. Built in a weekend with Claude and Next.js.",
+        "Uplift is a web app (iOS app in progress) that helps users stay consistent by tracking daily activities and building streaks. Instead of focusing on rigid habits, Uplift makes progress flexible—any completed activity counts toward your daily streak.",
       role: "Builder · Designer",
       stack: ["Next.js", "v0.dev", "shadcn/ui", "Supabase"],
     },
     {
-      slug: "luffiaiwallet",
+      slug: "creditcard",
       title: "Luffi AI Wallet",
       kind: "personal",
-      tags: ["AI", "Product"],
-      year: "2026",
+      type: "personal",
+      tags: ["Fintech"],
+      year: "2025",
       summary:
-        "A credit card benefits tracker to catalog card perks and ensure annual fee value is fully utilized",
+        "An AI-powered wallet that helps you track and maximize the value of your credit cards",
       description:
-        "A vibe-coded experiment in calm-tech. Patience Pod is an ambient AI companion built to help you stay with a task longer. It uses short guided audio sessions, gentle haptic cues, and a visual rhythm that discourages context switching. Built in a weekend with Claude and Next.js.",
+        "Luffi is an AI-powered wallet that helps users get the most value out of their credit cards. It tracks rewards, benefits, and annual fee utilization to ensure users are getting a positive return on the cards they pay for.",
       role: "Builder · Designer",
       stack: ["Swift", "Claude Code", "Supabase"],
     },
     {
       slug: "respezy",
       title: "Respezy",
-      kind: "personal",
-      tags: ["AI", "Product"],
+      kind: "founder",
+      type: "founder",
+      tags: ["Healthcare"],
       year: "2020",
       summary:
-        "A credit card benefits tracker to catalog card perks and ensure annual fee value is fully utilized",
+        "Respezy is an MIT delta v startup that scores students' COVID risk and helps colleges keep campuses safe.",
       description:
-        "A vibe-coded experiment in calm-tech. Patience Pod is an ambient AI companion built to help you stay with a task longer. It uses short guided audio sessions, gentle haptic cues, and a visual rhythm that discourages context switching. Built in a weekend with Claude and Next.js.",
-      role: "Builder · Designer",
+        "As we begin to reopen, it can be difficult to know what are the right things to do for our health. This fall, 5 million college students will be returning to campuses, creating concerns for student health and safety. At Respezy, our goal is to increase safety for students and reduce monitoring and enforcement challenges for colleges. The Respezy app uses a risk assessment model that produces an infection risk score based off of the student’s environment and activities. The app allows students to plan and track their daily behaviors and lower their health risks. The app can predict potential safety issues on campus and allow colleges to prevent them. After the pandemic, we plan on helping millennials adopt healthier behaviors by integrating more application and technology into our platform.",
+      role: "Builder · Founder",
       stack: ["Swift", "Claude Code", "Supabase"],
     },
     {
       slug: "motorhood",
       title: "Motorhood",
-      kind: "personal",
-      tags: ["AI", "Product"],
+      kind: "founder",
+      type: "founder",
+      tags: ["Automotive"],
       year: "2018",
       summary:
-        "A credit card benefits tracker to catalog card perks and ensure annual fee value is fully utilized",
+        "Motorhood is a digital platform where users can book a service for their vehicles with real-time tracking of an ongoing service.",
       description:
-        "A vibe-coded experiment in calm-tech. Patience Pod is an ambient AI companion built to help you stay with a task longer. It uses short guided audio sessions, gentle haptic cues, and a visual rhythm that discourages context switching. Built in a weekend with Claude and Next.js.",
+        "Motorhood is a digital platform where users can book a service for their vehicles with real-time tracking of an ongoing service.",
       role: "Builder · Designer",
-      stack: ["Swift", "Claude Code", "Supabase"],
+      stack: ["Android"],
     },
     {
       slug: "pikachoo",
       title: "Pikachoo",
-      kind: "personal",
-      tags: ["AI", "Product"],
+      kind: "founder",
+      type: "founder",
+      tags: ["ECommerce"],
       year: "2015",
       summary:
-        "A credit card benefits tracker to catalog card perks and ensure annual fee value is fully utilized",
+        "An e-commerce platform to enable local makers to sell products online",
       description:
-        "A vibe-coded experiment in calm-tech. Patience Pod is an ambient AI companion built to help you stay with a task longer. It uses short guided audio sessions, gentle haptic cues, and a visual rhythm that discourages context switching. Built in a weekend with Claude and Next.js.",
+        "An e-commerce platform to enable local makers to sell products online; onboarded 20 makers & reached 1k+ customers",
       role: "Builder · Designer",
       stack: ["Swift", "Claude Code", "Supabase"],
     },
@@ -83,6 +88,7 @@ export const portfolioData: PortfolioData = {
       slug: "patiencepod",
       title: "Patience Pod",
       kind: "personal",
+      type: "personal",
       tags: ["AI", "Product"],
       year: "2025",
       summary:
@@ -96,6 +102,7 @@ export const portfolioData: PortfolioData = {
       slug: "savor",
       title: "Savor",
       kind: "personal",
+      type: "personal",
       tags: ["AI", "Mobile"],
       year: "2025",
       summary:
@@ -109,6 +116,7 @@ export const portfolioData: PortfolioData = {
       slug: "dataviz",
       title: "Data Visualization Studio",
       kind: "personal",
+      type: "personal",
       tags: ["AI", "Data"],
       year: "2024",
       summary:
@@ -122,6 +130,7 @@ export const portfolioData: PortfolioData = {
       slug: "powerpoint",
       title: "Deck Author",
       kind: "personal",
+      type: "personal",
       tags: ["AI", "Multimodal"],
       year: "2024",
       summary:
@@ -135,6 +144,7 @@ export const portfolioData: PortfolioData = {
       slug: "googleagent",
       title: "Google Agent",
       kind: "personal",
+      type: "personal",
       tags: ["AI", "Agents"],
       year: "2024",
       summary:
@@ -148,6 +158,7 @@ export const portfolioData: PortfolioData = {
       slug: "uber-oracle",
       title: "Uber × Oracle Integration",
       kind: "work",
+      type: "work",
       tags: ["Enterprise", "Integration"],
       year: "2024",
       summary:
@@ -161,6 +172,7 @@ export const portfolioData: PortfolioData = {
       slug: "uber-apple",
       title: "Uber × Apple Partnership",
       kind: "work",
+      type: "work",
       tags: ["Enterprise", "Strategy"],
       year: "2023",
       summary:
@@ -174,6 +186,7 @@ export const portfolioData: PortfolioData = {
       slug: "adyen-shopify",
       title: "Adyen × Shopify",
       kind: "work",
+      type: "work",
       tags: ["Payments", "Integration"],
       year: "2022",
       summary:
@@ -187,6 +200,7 @@ export const portfolioData: PortfolioData = {
       slug: "adyen-rectangle",
       title: "Adyen × Rectangle Health",
       kind: "work",
+      type: "work",
       tags: ["Payments", "Healthcare"],
       year: "2021",
       summary:
@@ -200,6 +214,7 @@ export const portfolioData: PortfolioData = {
       slug: "hyperloop",
       title: "Hyperloop",
       kind: "work",
+      type: "personal",
       tags: ["Manufacturing", "MIT"],
       year: "2019",
       summary:
@@ -213,6 +228,7 @@ export const portfolioData: PortfolioData = {
       slug: "augmentor",
       title: "Augmentor",
       kind: "work",
+      type: "personal",
       tags: ["AR/VR", "UI/UX"],
       year: "2019",
       summary:

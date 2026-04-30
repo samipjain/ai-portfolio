@@ -9,6 +9,7 @@ export interface Project {
   slug: string;
   title: string;
   kind: "work" | "personal" | "founder";
+  type: "work" | "personal" | "founder";
   tags: string[];
   year: string;
   summary: string;
