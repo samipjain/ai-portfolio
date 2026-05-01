@@ -12,6 +12,8 @@ export function ProjectVisual({ project }: { project: Project }) {
   const variants = ["grid", "orbit", "stack", "wave"] as const;
   const variant = variants[seed % variants.length];
   const hue = project.kind === "personal" ? 55 + (seed % 40) : 240 + (seed % 60);
+  // Normalise to [0, 2π] to avoid floating-point divergence between SSR and browser
+  const angle = (seed % 62832) / 10000;
 
   return (
     <div
@@ -55,14 +57,14 @@ export function ProjectVisual({ project }: { project: Project }) {
           />
           <circle cx="100" cy="60" r="8" fill="currentColor" />
           <circle
-            cx={100 + 26 * Math.cos(seed)}
-            cy={60 + 26 * Math.sin(seed)}
+            cx={100 + 26 * Math.cos(angle)}
+            cy={60 + 26 * Math.sin(angle)}
             r="3"
             fill="currentColor"
           />
           <circle
-            cx={100 + 40 * Math.cos(seed + 2)}
-            cy={60 + 40 * Math.sin(seed + 2)}
+            cx={100 + 40 * Math.cos(angle + 2)}
+            cy={60 + 40 * Math.sin(angle + 2)}
             r="2"
             fill="currentColor"
             opacity="0.7"
