@@ -273,7 +273,6 @@ section {
 
 @media (max-width: 768px) {
   section { padding: 64px 0; }
-  .footer { padding: 64px 0; }
   .sh { margin-bottom: 28px; }
 }
 
@@ -956,55 +955,270 @@ section {
    Footer
    ============================================ */
 
-.footer__email-link {
-  font-size: 18px;
-  letter-spacing: -0.015em;
-  color: var(--fg);
-  border-bottom: 1px solid var(--line-strong);
-  padding-bottom: 2px;
-  align-self: center;
-  transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
-}
-.footer__email-link:hover { color: var(--accent); border-color: var(--accent); }
-
-.footer__left {
-  display: grid;
-  gap: 14px;
-  justify-items: start;
-}
 .footer {
   padding: 96px 0;
   position: relative;
 }
-.footer__inner {
+
+.footer__bar {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   align-items: center;
-  gap: 24px;
+  justify-content: space-between;
   flex-wrap: wrap;
-  width: 100%;
-  text-align: left;
-  padding: 18px 20px;
+  gap: 12px;
+  padding: 20px 0 32px;
+  margin-top: 24px;
+  border-top: 1px solid var(--line);
 }
-.footer__meta {
-  text-align: right;
-  display: grid;
-  gap: 6px;
+
+.footer__copy {
+  font-size: 12px;
   color: var(--fg-subtle);
 }
+
+/* ── Footer scene container ── */
+
+.footer-scene {
+  width: 100%;
+  padding: 28px 24px;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--line);
+  background: var(--bg-elev);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  animation: sceneIn 0.35s var(--ease);
+}
+
+@keyframes sceneIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Piano ── */
+
+.piano {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.piano__hint,
+.piano__caption {
+  color: var(--fg-subtle);
+  font-size: 11px;
+}
+
+.piano__keyboard {
+  position: relative;
+  width: 100%;
+  max-width: 680px;
+  height: 140px;
+  user-select: none;
+}
+
+.piano__white-row {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 4px;
+  height: 100%;
+}
+
+.piano__white {
+  position: relative;
+  border: 1px solid var(--line-strong);
+  background: linear-gradient(180deg, #ffffff, #f1f2f5);
+  border-radius: 0 0 8px 8px;
+  cursor: pointer;
+  transition: background 0.08s var(--ease), transform 0.08s var(--ease);
+  overflow: hidden;
+  padding: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+[data-theme="dark"] .piano__white {
+  background: linear-gradient(180deg, #e8eaef, #c8ccd4);
+  border-color: rgba(0, 0, 0, 0.3);
+}
+
+.piano__white:hover { background: #eef0f4; }
+
+.piano__white--on,
+.piano__white:active {
+  background: var(--accent-soft) !important;
+  transform: translateY(2px);
+}
+
+.piano__black-row {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.piano__black {
+  position: absolute;
+  top: 0;
+  width: 36px;
+  height: 90px;
+  background: linear-gradient(180deg, #1c1d22, #0a0b0d);
+  border: 1px solid #000;
+  border-radius: 0 0 6px 6px;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: background 0.08s var(--ease), transform 0.08s var(--ease);
+  padding: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 8px;
+}
+
+.piano__black:hover { background: linear-gradient(180deg, #2a2b30, #131418); }
+
+.piano__black--on,
+.piano__black:active {
+  background: var(--accent) !important;
+  transform: translateY(2px);
+}
+
+.piano__label {
+  font-size: 10px;
+  color: var(--fg-subtle);
+  pointer-events: none;
+  margin-bottom: 6px;
+}
+
+.piano__black .piano__label { color: rgba(255, 255, 255, 0.6); }
+
+.piano__ripple {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  transform: translateX(-50%);
+  animation: pianoRipple 1s ease-out forwards;
+  pointer-events: none;
+}
+
+.piano__ripple--black { background: #fff; }
+
+@keyframes pianoRipple {
+  0%   { opacity: 0.7; transform: translateX(-50%) scale(1); }
+  100% { opacity: 0;   transform: translateX(-50%) scale(8); }
+}
+
+/* ── Tower of Hanoi ── */
+
+.hanoi {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.hanoi__hint { color: var(--fg-subtle); font-size: 11px; }
+
+.hanoi__board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  width: 100%;
+  max-width: 600px;
+  height: 160px;
+}
+
+.hanoi__peg {
+  position: relative;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.15s var(--ease), border-color 0.15s var(--ease);
+  padding: 0;
+}
+
+.hanoi__peg:hover { background: var(--bg-tint); }
+.hanoi__peg--sel  { border-color: var(--accent); background: var(--accent-soft); }
+
+.hanoi__rod {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 130px;
+  background: var(--fg-subtle);
+  border-radius: 2px;
+}
+
+.hanoi__base {
+  position: absolute;
+  bottom: 8px;
+  left: 10%;
+  right: 10%;
+  height: 4px;
+  background: var(--fg-muted);
+  border-radius: 2px;
+}
+
+.hanoi__disks {
+  position: absolute;
+  bottom: 14px;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 2px;
+}
+
+.hanoi__disk {
+  height: 16px;
+  border-radius: 4px;
+  transition: width 0.2s var(--ease);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 -1px 0 rgba(0, 0, 0, 0.15) inset;
+}
+
+.hanoi__stats {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: 11px;
+  color: var(--fg-muted);
+}
+
+.hanoi__reset {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  background: transparent;
+  border: 1px solid var(--line-strong);
+  color: var(--fg);
+  padding: 6px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: border-color 0.2s var(--ease), color 0.2s var(--ease);
+}
+
+.hanoi__reset:hover { border-color: var(--accent); color: var(--accent); }
+
 @media (max-width: 640px) {
-  .footer__inner {
-    flex-direction: column;
-    align-items: stretch;
-    text-align: center;
-  }
-  .footer__left {
-    justify-items: center;
-  }
-  .footer__meta {
-    text-align: center;
-  }
+  .footer__bar { justify-content: center; text-align: center; }
+  .footer-scene { padding: 20px 16px; }
+  .piano__keyboard { height: 110px; }
+  .piano__black { width: 28px; height: 70px; }
 }
 
 /* ============================================
