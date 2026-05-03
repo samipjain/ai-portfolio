@@ -32,31 +32,60 @@ function PianoFooter() {
   const [active, setActive] = useState<Record<string, boolean>>({});
   const [ripples, setRipples] = useState<{ id: number; note: string }[]>([]);
 
-  const ensureCtx = () => {
+  const getCtx = useCallback(() => {
     if (!ctxRef.current) {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ctxRef.current = new (window.AudioContext || (window as any).webkitAudioContext)();
+      const AC = window.AudioContext || (window as any).webkitAudioContext;
+      ctxRef.current = new AC();
     }
     return ctxRef.current;
-  };
+  }, []);
 
-  const playNote = useCallback(async (note: string, freq: number) => {
-    const ctx = ensureCtx();
-    // iOS Safari/Chrome keep AudioContext suspended until explicitly resumed
-    // inside a user-gesture call stack — this is the required unlock.
-    if (ctx.state === "suspended") await ctx.resume();
-    const now = ctx.currentTime;
-    const osc = ctx.createOscillator();
-    const gain = ctx.createGain();
-    osc.type = "triangle";
-    osc.frequency.value = freq;
-    gain.gain.setValueAtTime(0.0001, now);
-    gain.gain.exponentialRampToValueAtTime(0.22, now + 0.015);
-    gain.gain.exponentialRampToValueAtTime(0.12, now + 0.12);
-    gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.9);
-    osc.connect(gain).connect(ctx.destination);
-    osc.start(now);
-    osc.stop(now + 1);
+  // iOS requires AudioContext to be resumed inside a touchstart — pre-unlock
+  // on first touch anywhere so it's ready before the first piano tap fires.
+  useEffect(() => {
+    const unlock = () => {
+      const ctx = getCtx();
+      if (ctx.state !== "suspended") return;
+      ctx.resume().then(() => {
+        // Play a silent one-sample buffer — finalises the iOS unlock
+        const buf = ctx.createBuffer(1, 1, ctx.sampleRate);
+        const src = ctx.createBufferSource();
+        src.buffer = buf;
+        src.connect(ctx.destination);
+        src.start(0);
+      });
+    };
+    document.addEventListener("touchstart", unlock, { once: true, passive: true });
+    document.addEventListener("mousedown",  unlock, { once: true, passive: true });
+    return () => {
+      document.removeEventListener("touchstart", unlock);
+      document.removeEventListener("mousedown",  unlock);
+    };
+  }, [getCtx]);
+
+  const playNote = useCallback((note: string, freq: number) => {
+    const ctx = getCtx();
+
+    const schedule = () => {
+      const now = ctx.currentTime;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = "triangle";
+      osc.frequency.value = freq;
+      gain.gain.setValueAtTime(0.0001, now);
+      gain.gain.exponentialRampToValueAtTime(0.22, now + 0.015);
+      gain.gain.exponentialRampToValueAtTime(0.12, now + 0.12);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.9);
+      osc.connect(gain).connect(ctx.destination);
+      osc.start(now);
+      osc.stop(now + 1);
+    };
+
+    // If still suspended (e.g. first tap before pre-unlock resolved), resume
+    // via .then() — avoids async/await which breaks iOS gesture chain
+    if (ctx.state === "suspended") ctx.resume().then(schedule);
+    else schedule();
 
     setActive((a) => ({ ...a, [note]: true }));
     setTimeout(() => setActive((a) => ({ ...a, [note]: false })), 220);
@@ -64,8 +93,7 @@ function PianoFooter() {
     const id = Date.now() + Math.random();
     setRipples((r) => [...r, { id, note }]);
     setTimeout(() => setRipples((r) => r.filter((x) => x.id !== id)), 1000);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [getCtx]);
 
   useEffect(() => {
     const onDown = (e: KeyboardEvent) => {
