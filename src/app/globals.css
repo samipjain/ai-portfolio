@@ -1039,6 +1039,7 @@ section {
   display: flex;
   align-items: flex-end;
   justify-content: center;
+  touch-action: manipulation;
 }
 
 [data-theme="dark"] .piano__white {
@@ -1077,6 +1078,7 @@ section {
   align-items: flex-end;
   justify-content: center;
   padding-bottom: 8px;
+  touch-action: manipulation;
 }
 
 .piano__black:hover { background: linear-gradient(180deg, #2a2b30, #131418); }

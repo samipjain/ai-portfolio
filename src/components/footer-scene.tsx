@@ -115,6 +115,7 @@ function PianoFooter() {
             <button
               key={k.note}
               className={`piano__white${active[k.note] ? " piano__white--on" : ""}`}
+              onTouchStart={(e) => { e.preventDefault(); playNote(k.note, k.freq); }}
               onClick={() => playNote(k.note, k.freq)}
               aria-label={k.note}
             >
@@ -131,6 +132,7 @@ function PianoFooter() {
               key={k.note}
               className={`piano__black${active[k.note] ? " piano__black--on" : ""}`}
               style={{ left: `calc(${(k.after + 1) * 10}% - 18px)` }}
+              onTouchStart={(e) => { e.preventDefault(); playNote(k.note, k.freq); }}
               onClick={() => playNote(k.note, k.freq)}
               aria-label={k.note}
             >
