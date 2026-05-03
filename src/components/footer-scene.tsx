@@ -40,8 +40,11 @@ function PianoFooter() {
     return ctxRef.current;
   };
 
-  const playNote = useCallback((note: string, freq: number) => {
+  const playNote = useCallback(async (note: string, freq: number) => {
     const ctx = ensureCtx();
+    // iOS Safari/Chrome keep AudioContext suspended until explicitly resumed
+    // inside a user-gesture call stack — this is the required unlock.
+    if (ctx.state === "suspended") await ctx.resume();
     const now = ctx.currentTime;
     const osc = ctx.createOscillator();
     const gain = ctx.createGain();
